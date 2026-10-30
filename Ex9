@@ -1,0 +1,43 @@
+Phần 1: Phân tích bài toán (I/O)
+
+Xác định Đầu vào và Đầu ra
+
+Đầu vào: 4 nhóm vai trò (Kỹ thuật, Thiết kế, Kinh doanh, Nhà đầu tư) và 5 nguyên tắc bảo mật Google Drive.
+
+Đầu ra: Cấu trúc thư mục 2 cấp tối ưu và bảng phân quyền chi tiết.
+
+Cấu trúc thư mục Google Drive 2 cấp
+
+Cấp 1: Thư mục dự án chung (CampusPay Project) làm gốc.
+
+Cấp 2: Các thư mục con theo ban (01_Management_General, 02_Engineering, 03_Design, 04_Business, 05_External_Share).
+
+Các bước thiết kế và cấu hình hệ thống
+
+Bước 1: Tạo cấu trúc 2 cấp và tắt hoàn toàn liên kết công khai.
+
+Bước 2: Cấp quyền riêng biệt theo từng ban và thiết lập thời hạn cho nhà đầu tư.
+
+Bước 3: Rà soát quyền, kiểm tra lịch sử phiên bản và quy trình thu hồi khi nhân sự nghỉ việc.
+
+Part 2: Triển khai & Chống lỗi
+
+Phân quyền chi tiết cho các vai trò và loại tài liệu
+
+Code và API Keys: Kỹ thuật (Editor); Ban khác và nhà đầu tư (Không có quyền); Giới hạn Restricted tuyệt đối.
+
+UI/UX Assets: Thiết kế (Editor); Kinh doanh (Viewer); Kỹ thuật và nhà đầu tư (Không có quyền).
+
+Business Plan: Kinh doanh (Editor); Kỹ thuật, nhà đầu tư (Viewer); Thiết kế (Không có quyền).
+
+Slide Pitch: Kinh doanh (Editor); Kỹ thuật, Thiết kế, nhà đầu tư (Viewer); Tài liệu dùng chung.
+
+Partner Contracts: Kinh doanh (Editor); Các ban khác và nhà đầu tư (Không có quyền).
+
+Giải pháp xử lý 3 bẫy dữ liệu
+
+Bẫy 1 (Business Plan cho Kỹ thuật): Cấp quyền Viewer để nắm context viết code nhưng không sửa được nội dung.
+
+Bẫy 2 (Nhà đầu tư tải PDF): Giữ nguyên tính năng cho phép tải để xem offline; file PDF tĩnh đảm bảo không ai sửa được file gốc.
+
+Bẫy 3 (Thành viên nghỉ việc): Vô hiệu hóa tài khoản trên Workspace Admin, gỡ email khỏi danh sách chia sẻ và check log Activity.
